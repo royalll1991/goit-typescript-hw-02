@@ -12,7 +12,7 @@ function ImageGallery({images, onClick}: Props) {
     return (
         <ul className={css.list}>
             {images.map((image) => (
-                <li className={css.listItem} key={image.id} onClick={() => onClick(image)}>
+                <li className={css.listItem} key={image.id} onClick={() => onClick()}>
                     <ImageCard 
                         small={image.urls.small}
                         description={image.description}
