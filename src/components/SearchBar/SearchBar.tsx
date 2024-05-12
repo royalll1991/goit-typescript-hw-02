@@ -1,29 +1,33 @@
-import  { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import css from './SearchBar.module.css';
-function SearchBar({ onSubmit }) {
-    const [query, setQuery] = useState('');
+
+interface SearchBarProps {
+    onSubmit: (query: string) => void;
+}
+
+function SearchBar({ onSubmit }: SearchBarProps) {
+    const [query, setQuery] = useState<string>('');
+
     const notify = () => toast('no image to find, put text');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (!query) {
             notify();
             return;
         }
-        
         onSubmit(query);
-       
     };
 
-    const handleChange = (event) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value);
     };
 
     return (
-        <header className = {css.box}>
+        <header className={css.box}>
             <form onSubmit={handleSubmit}>
-                <input className = {css.search}
+                <input className={css.search}
                     value={query}
                     onChange={handleChange}
                     type="text"
