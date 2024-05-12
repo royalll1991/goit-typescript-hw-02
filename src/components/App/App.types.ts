@@ -22,5 +22,5 @@ export interface ImageProps {
     small: string;
     description: string;
     likes: number;
-    onClick: () => void;
+    onClick: (image: {small: string; description: string; likes: number;}) => void;
 }

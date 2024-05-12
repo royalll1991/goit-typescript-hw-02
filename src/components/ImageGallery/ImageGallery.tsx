@@ -5,7 +5,7 @@ import ImageCard from './ImageCard/ImageCard';
 
 interface Props {
     images: Image[];
-    onClick: (image: Image) => void;
+    onClick: () => void;
 }
 
 function ImageGallery({images, onClick}: Props) {
