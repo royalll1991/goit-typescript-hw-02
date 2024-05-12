@@ -19,7 +19,7 @@ function App() {
     const [modalIsOpen, setIsOpen] = useState<boolean>(false);
     const [selectedImage, setSelectedImage] = useState<Image | null>(null);
 
-    const handleSubmit = async (query: string, page: number): Promise<void> => {
+    const handleSubmit = async (query: string, page: number): Promise<any> => {
         try {
             setIsLoading(true);
             setError(false);
@@ -59,7 +59,7 @@ function App() {
         <div>
             <SearchBar onSubmit={setQuery} />
             {error && <ErrorMessage />}
-            {images.length > 0 && <ImageGallery images={images} onClick={openModal} />}
+            {images.length > 0 && <ImageGallery images={images} onClick={() => openModal} />}
             {images.length > 0 && <LoadMoreBtn onClick={handleLoadMore} />}
             {isLoading && <Loader />}
             {modalIsOpen && selectedImage && <ImageModal
