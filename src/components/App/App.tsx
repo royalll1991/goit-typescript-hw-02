@@ -59,7 +59,7 @@ function App() {
         <div>
             <SearchBar onSubmit={setQuery} />
             {error && <ErrorMessage />}
-            {images.length > 0 && <ImageGallery images={images} onClick={() => openModal} />}
+            {images.length > 0 && <ImageGallery images={images} onClick={openModal} />}
             {images.length > 0 && <LoadMoreBtn onClick={handleLoadMore} />}
             {isLoading && <Loader />}
             {modalIsOpen && selectedImage && <ImageModal

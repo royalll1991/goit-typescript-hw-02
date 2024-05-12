@@ -19,8 +19,6 @@ export interface Props {
 }
 
 export interface ImageProps {
-    small: string;
-    description: string;
-    likes: number;
-    onClick: (image: {small: string; description: string; likes: number;}) => void;
+    image: Image
+    onClick: (image: Image) => void;
 }

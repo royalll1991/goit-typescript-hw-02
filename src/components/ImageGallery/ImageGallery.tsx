@@ -5,18 +5,16 @@ import ImageCard from './ImageCard/ImageCard';
 
 interface Props {
     images: Image[];
-    onClick: () => void;
+    onClick: (image: Image) => void;
 }
 
 function ImageGallery({images, onClick}: Props) {
     return (
         <ul className={css.list}>
             {images.map((image) => (
-                <li className={css.listItem} key={image.id} onClick={() => onClick()}>
+                <li className={css.listItem} key={image.id} >
                     <ImageCard 
-                        small={image.urls.small}
-                        description={image.description}
-                        likes={image.likes}
+                        image={image}
                         onClick={onClick}
                     />
                 </li>

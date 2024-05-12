@@ -2,11 +2,11 @@ import css from './ImageCard.module.css'
 import {ImageProps} from '../../App/App.types'
 
 
-function ImageCard ({small, description, likes, onClick}: ImageProps) {
+function ImageCard ({image, onClick}: ImageProps) {
     return (
-        <div onClick={() => onClick ({small, description, likes})} className={css.box}>
-            <img src={small} alt={description} className={css.card}/>
-            <p>likes {likes}</p>
+        <div onClick={() => onClick (image)} className={css.box}>
+            <img src={image.urls.small} alt={image.description} className={css.card}/>
+            <p>likes {image.likes}</p>
         </div>
     );
 }
