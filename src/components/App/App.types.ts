@@ -9,6 +9,12 @@ export interface Image {
     likes: number;
 }
 
+export interface DataType {
+     total: number;
+    total_pages: number;
+    results: Image[];
+}
+
 export interface SearchBarProps {
     onSubmit: (query: string) => void;
 }

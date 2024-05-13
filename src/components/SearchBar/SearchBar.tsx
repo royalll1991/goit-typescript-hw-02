@@ -17,6 +17,7 @@ function SearchBar({ onSubmit }: SearchBarProps) {
             notify();
             return;
         }
+        
         onSubmit(query);
     };
 

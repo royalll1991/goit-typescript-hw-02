@@ -7,7 +7,7 @@ import ImageGallery from '../ImageGallery/ImageGallery';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
-import {Image} from './App.types'
+import {DataType, Image} from './App.types'
 
 
 function App() {
@@ -19,15 +19,13 @@ function App() {
     const [modalIsOpen, setIsOpen] = useState<boolean>(false);
     const [selectedImage, setSelectedImage] = useState<Image | null>(null);
 
-    const handleSubmit = async (query: string, page: number): Promise<any> => {
+    const handleSubmit = async (query: string, page: number): Promise<void> => {
         try {
             setIsLoading(true);
             setError(false);
-            if (page === 1) {
-                setImages([]);
-            }
-            const data = await searchImage(query, page);
+            const data:DataType = await searchImage(query, page);
             setImages(prevImages => [...prevImages, ...data.results]);
+           
         } catch (error) {
             setError(true);
         } finally {
@@ -43,9 +41,15 @@ function App() {
         if (!query) {
             return;
         }
+        
         handleSubmit(query, page);
     }, [query, page]);
-
+    
+    useEffect(() => {
+    setPage(1); 
+    setImages([]);
+    }, [query]);
+    
     function openModal(image: Image) {
         setSelectedImage(image);
         setIsOpen(true);
